@@ -28,6 +28,9 @@ import com.google.firebase.auth.GoogleAuthProvider;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class MainActivity extends AppCompatActivity {
 
     TextView oTextViewRegister;
@@ -130,7 +133,21 @@ public class MainActivity extends AppCompatActivity {
                     Intent intent=new Intent(MainActivity.this, HomeActivity.class);
                     startActivity(intent);
                 }else {
-                    Toast.makeText(MainActivity.this,"no se pudo almacenar informacion",Toast.LENGTH_SHORT).show();
+                    String email=oAuth.getCurrentUser().getEmail();
+                    Map<String,Object> map=new HashMap<>();
+                    map.put("email",email);
+                    oFirestore.collection("Users").document(id).set(map).addOnCompleteListener(new OnCompleteListener<Void>() {
+                        @Override
+                        public void onComplete(@NonNull Task<Void> task) {
+                            if (task.isSuccessful()){
+                                Intent intent=new Intent(MainActivity.this,CompletarregistroActivity2.class);
+                                startActivity(intent);
+                            }else{
+                                Toast.makeText(MainActivity.this,"no se pudo almacenar informacion",Toast.LENGTH_SHORT).show();
+                            }
+                        }
+                    });
+
                 }
             }
         });
