@@ -1,4 +1,4 @@
-package com.example.myapplication;
+package com.example.myapplication.activities;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -9,6 +9,11 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.example.myapplication.R;
+import com.example.myapplication.models.User;
+import com.example.myapplication.providers.AuthProviders;
+import com.example.myapplication.providers.UsersProviders;
+import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputEditText;
@@ -21,8 +26,11 @@ import java.util.Map;
 public class CompletarregistroActivity2 extends AppCompatActivity {
     TextInputEditText oTextInputUsernameRegister;
     Button oButtonRegister;
-    FirebaseAuth oAuth;
-    FirebaseFirestore oFirestore;
+    //FirebaseAuth oAuth;
+    //FirebaseFirestore oFirestore;
+    AuthProviders oAuthProviders;
+    UsersProviders oUsersproviders;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,8 +39,9 @@ public class CompletarregistroActivity2 extends AppCompatActivity {
 
         oTextInputUsernameRegister=findViewById(R.id.textInputEditTextUserNameCompletar);
         oButtonRegister= findViewById(R.id.ButtonRegisterCompletar);
-        oAuth=FirebaseAuth.getInstance();
-        oFirestore=FirebaseFirestore.getInstance();
+
+        oAuthProviders=new AuthProviders();
+        oUsersproviders=new UsersProviders();
 
         oButtonRegister.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -52,14 +61,15 @@ public class CompletarregistroActivity2 extends AppCompatActivity {
     }
 
     private void updateUser(String username) {
-        String id=oAuth.getCurrentUser().getUid();
-        Map<String,Object>map=new HashMap<>();
-        map.put("username",username);
-        oFirestore.collection("Users").document(id).update(map).addOnCompleteListener(new OnCompleteListener<Void>() {
+        String id=oAuthProviders.getVid();
+        User user=new User();
+        user.setUsername(username);
+        user.setEmail(id);
+        oUsersproviders.update(user).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
                 if(task.isSuccessful()){
-                    Intent intent=new Intent(CompletarregistroActivity2.this,MainActivity.class);
+                    Intent intent=new Intent(CompletarregistroActivity2.this, MainActivity.class);
                 }else{
                     Toast.makeText(CompletarregistroActivity2.this, "No se guardo en base datos", Toast.LENGTH_SHORT).show();
                 }

@@ -1,4 +1,4 @@
-package com.example.myapplication;
+package com.example.myapplication.activities;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -8,6 +8,10 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.example.myapplication.R;
+import com.example.myapplication.models.User;
+import com.example.myapplication.providers.AuthProviders;
+import com.example.myapplication.providers.UsersProviders;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputEditText;
@@ -30,9 +34,9 @@ public class RegisterActivity extends AppCompatActivity {
     TextInputEditText oTextInputEditTextPasswordRegister;
     TextInputEditText oTextInputEditTextConfirmPassword;
     Button oButtonRegister;
-    FirebaseAuth mAut;
-    FirebaseFirestore mFirestore;
 
+    AuthProviders oAuthProvider;
+    UsersProviders oUserProvider;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,8 +48,8 @@ public class RegisterActivity extends AppCompatActivity {
         oTextInputEditTextPasswordRegister=findViewById(R.id.textInputEditTextPasswordRegister);
         oTextInputEditTextConfirmPassword=findViewById(R.id.textInputEditTextConfirmPassword);
 
-        mAut=FirebaseAuth.getInstance();
-        mFirestore=FirebaseFirestore.getInstance();
+       oAuthProvider=new AuthProviders();
+       oUserProvider= new UsersProviders();
 
         oButtonRegister=findViewById(R.id.ButtonRegister);
         oButtonRegister.setOnClickListener(new View.OnClickListener() {
@@ -91,16 +95,20 @@ public class RegisterActivity extends AppCompatActivity {
     }
 
     private void CreateUser(final String username, final String email, String password) {
-        mAut.createUserWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+        oAuthProvider.register(email, password)
+
+        .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if(task.isSuccessful()){
-                    String id=mAut.getCurrentUser().getUid();
-                    Map<String, String> map=new HashMap<>();
-                    map.put("email",email);
-                    map.put("username",username);
-                    map.put("password",password);
-                    mFirestore.collection("Users").document(id).set(map).addOnCompleteListener(new OnCompleteListener<Void>() {
+                    String id= oAuthProvider.getVid();
+                    User user=new User();
+                    user.setId(id);
+                    user.setEmail(email);
+                    user.setUsername(username);
+                    user.setPassword(password);
+                    oUserProvider.create(user)
+                    .addOnCompleteListener(new OnCompleteListener<Void>() {
                         @Override
                         public void onComplete(@NonNull Task<Void> task) {
                             if (task.isSuccessful()) {
