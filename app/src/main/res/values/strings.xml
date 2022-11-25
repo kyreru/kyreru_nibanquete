@@ -11,5 +11,7 @@
     <string name="registrarse">Registrarse</string>
     <string name="confirmar_contrase_a">Confirmar Contraseña</string>
     <string name="mi_banquete">Mi Banquete</string>
+    <string name="custom_title">Un momento</string>
+
 
 </resources>

@@ -3,6 +3,8 @@ package com.example.myapplication.activities;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.AlertDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -16,15 +18,12 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.auth.AuthResult;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.firestore.FirebaseFirestore;
 
-import java.util.HashMap;
-import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import de.hdodenhof.circleimageview.CircleImageView;
+import dmax.dialog.SpotsDialog;
 
 public class RegisterActivity extends AppCompatActivity {
 
@@ -37,19 +36,26 @@ public class RegisterActivity extends AppCompatActivity {
 
     AuthProviders oAuthProvider;
     UsersProviders oUserProvider;
+    AlertDialog oDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
 
-        oTextInputEditTextUserName=findViewById(R.id.textInputEditTextUserName);
-        oTextInputEditTextEmailRegister=findViewById(R.id.textInputEditTextEmailRegister);
-        oTextInputEditTextPasswordRegister=findViewById(R.id.textInputEditTextPasswordRegister);
-        oTextInputEditTextConfirmPassword=findViewById(R.id.textInputEditTextConfirmPassword);
+        oTextInputEditTextUserName = findViewById(R.id.textInputEditTextUserName);
+        oTextInputEditTextEmailRegister = findViewById(R.id.textInputEditTextEmailRegister);
+        oTextInputEditTextPasswordRegister = findViewById(R.id.textInputEditTextPasswordRegister);
+        oTextInputEditTextConfirmPassword = findViewById(R.id.textInputEditTextConfirmPassword);
 
-       oAuthProvider=new AuthProviders();
-       oUserProvider= new UsersProviders();
+        oAuthProvider = new AuthProviders();
+        oUserProvider = new UsersProviders();
+
+        oDialog =new SpotsDialog.Builder()
+                .setContext(this)
+                .setMessage(R.string.custom_title)
+                .setCancelable(false)
+                .build();
 
         oButtonRegister=findViewById(R.id.ButtonRegister);
         oButtonRegister.setOnClickListener(new View.OnClickListener() {
@@ -95,6 +101,7 @@ public class RegisterActivity extends AppCompatActivity {
     }
 
     private void CreateUser(final String username, final String email, String password) {
+        oDialog.show();
         oAuthProvider.register(email, password)
 
         .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
@@ -111,8 +118,12 @@ public class RegisterActivity extends AppCompatActivity {
                     .addOnCompleteListener(new OnCompleteListener<Void>() {
                         @Override
                         public void onComplete(@NonNull Task<Void> task) {
+                            oDialog.dismiss();
                             if (task.isSuccessful()) {
                                 Toast.makeText(RegisterActivity.this, "Se almaceno correctamente", Toast.LENGTH_SHORT).show();
+                                Intent intent=new Intent(RegisterActivity.this,HomeActivity.class);
+                                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
+                                startActivity(intent);
                             } else {
                                 Toast.makeText(RegisterActivity.this, "Su registro no se realizo", Toast.LENGTH_SHORT).show();
                             }
@@ -122,6 +133,7 @@ public class RegisterActivity extends AppCompatActivity {
 
                     Toast.makeText(RegisterActivity.this, "Su registro fue exitoso", Toast.LENGTH_SHORT).show();
                 }else{
+                    oDialog.dismiss();
                     Toast.makeText(RegisterActivity.this, "El registro no se pudo completar", Toast.LENGTH_SHORT).show();
                 }
             }
