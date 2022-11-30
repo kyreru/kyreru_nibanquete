@@ -47,7 +47,7 @@ public class HomeActivity extends AppCompatActivity {
                         openFragment(new ProfileFragment());
 
                     }
-                    return false;
+                    return true;
                 }
             };
 
