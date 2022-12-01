@@ -22,6 +22,11 @@
     <string name="Filtros">Filtros</string>
     <string name="Chat">Chat</string>
     <string name="Perfil">Perfil</string>
+    <string name="Pintura">Pintura</string>
+    <string name="escultura">Escultura</string>
+    <string name="fotografia">Fotografia</string>
+    <string name="arte_digital">Arte Digital</string>
+    <string name="pinacotheca">Pinacothec@</string>
 
 
 </resources>

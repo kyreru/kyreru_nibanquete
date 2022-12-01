@@ -5,13 +5,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".activities.MainActivity"
-    android:background="@drawable/menu"
+    android:background="@drawable/arte_fondp"
     android:fitsSystemWindows="true">
 
     <View
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="#FFFFFFFF"
+
         android:alpha="0.1"/>
 
     <LinearLayout
@@ -25,16 +25,16 @@
             android:layout_gravity="center"
             android:layout_marginTop="10dp"
             android:contentDescription="@string/todo"
-            android:src="@drawable/mesa_de_banquete" />
+            android:src="@drawable/rueda_de_color" />
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:hint="@string/mi_banquete"
+            android:hint="@string/pinacotheca"
             android:orientation="vertical"
             android:textAlignment="center"
-            android:textColor="@color/ROJO"
+            android:textColor="@color/black"
             android:textSize="45sp"
             android:textStyle="bold" />
 
@@ -44,8 +44,8 @@
             android:orientation="horizontal">
 
             <androidx.constraintlayout.utils.widget.ImageFilterView
-                android:layout_width="40dp"
-                android:layout_height="40dp"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginEnd="10dp"
@@ -64,7 +64,9 @@
                     android:background="@color/transparente"
                     android:hint="@string/correo_electronico"
                     android:inputType="textEmailAddress"
-                    android:textColorHint="@color/ROJO" />
+                    android:textColorHint="@color/black"
+                    android:textSize="20sp"
+                    android:textStyle="bold"/>
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -76,8 +78,8 @@
             android:orientation="horizontal">
 
             <androidx.constraintlayout.utils.widget.ImageFilterView
-                android:layout_width="40dp"
-                android:layout_height="40dp"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginEnd="10dp"
@@ -98,7 +100,9 @@
                     android:background="@color/transparente"
                     android:hint="@string/contrase_a"
                     android:inputType="text"
-                    android:textColorHint="@color/ROJO" />
+                    android:textColorHint="@color/black"
+                    android:textSize="20sp"
+                    android:textStyle="bold"/>
 
             </com.google.android.material.textfield.TextInputLayout>
         </LinearLayout>

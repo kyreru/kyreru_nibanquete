@@ -84,12 +84,12 @@
                 android:orientation="horizontal">
 
                 <ImageView
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
                     android:layout_marginLeft="10dp"
                     android:layout_marginTop="10dp"
                     android:layout_marginRight="10dp"
-                    android:src="@drawable/contrasena"
+                    android:src="@drawable/arte"
                     android:contentDescription="@string/todo" />
 
                 <com.google.android.material.textfield.TextInputLayout
@@ -117,12 +117,12 @@
                 android:orientation="horizontal">
 
                 <ImageView
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
                     android:layout_marginLeft="10dp"
                     android:layout_marginTop="10dp"
                     android:layout_marginRight="10dp"
-                    android:src="@drawable/contrasena"
+                    android:src="@drawable/descripcion_del_trabajo"
                     android:contentDescription="@string/todo" />
 
                 <com.google.android.material.textfield.TextInputLayout
@@ -181,14 +181,14 @@
                     <ImageView
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:src="@drawable/subir_foto"
+                        android:src="@drawable/pintura_rupestre"
                         android:contentDescription="@string/todo" />
 
                 </androidx.cardview.widget.CardView>
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/Categoria"
+                    android:text="@string/Pintura"
                     android:textAlignment="center"
                     android:textColor="@color/black"
                     android:textStyle="bold"
@@ -214,14 +214,14 @@
                     <ImageView
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:src="@drawable/subir_foto"
+                        android:src="@drawable/escultura"
                         android:contentDescription="@string/todo" />
 
                 </androidx.cardview.widget.CardView>
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/Categoria"
+                    android:text="@string/escultura"
                     android:textAlignment="center"
                     android:textColor="@color/black"
                     android:textStyle="bold"
@@ -245,14 +245,14 @@
                     <ImageView
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:src="@drawable/subir_foto"
+                        android:src="@drawable/fotografo"
                         android:contentDescription="@string/todo" />
 
                 </androidx.cardview.widget.CardView>
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/Categoria"
+                    android:text="@string/fotografia"
                     android:textAlignment="center"
                     android:textColor="@color/black"
                     android:textStyle="bold"
@@ -276,14 +276,14 @@
                     <ImageView
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:src="@drawable/subir_foto"
+                        android:src="@drawable/obras_de_arte"
                         android:contentDescription="@string/todo" />
 
                 </androidx.cardview.widget.CardView>
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/Categoria"
+                    android:text="@string/arte_digital"
                     android:textAlignment="center"
                     android:textColor="@color/black"
                     android:textStyle="bold"
