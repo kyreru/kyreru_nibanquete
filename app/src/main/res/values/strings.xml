@@ -14,6 +14,14 @@
     <string name="custom_title">Un momento</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="Crear_Publicacion">Crear Publicacion</string>
+    <string name="Categoria">Categoria</string>
+    <string name="Descripcion">Descripcion</string>
+    <string name="Publicar">Publicar</string>
+    <string name="completar_registro">Completar Registro</string>
+    <string name="Filtros">Filtros</string>
+    <string name="Chat">Chat</string>
+    <string name="Perfil">Perfil</string>
 
 
 </resources>
