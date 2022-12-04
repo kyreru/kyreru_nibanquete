@@ -26,8 +26,6 @@ public class UsersProviders {
     public Task<Void> update(User user){
         Map<String,Object> map=new HashMap<>();
         map.put("username" ,user.getUsername());
-        map.put("email",user.getEmail());
-        map.put("password",user.getPassword());
         return oCollection.document(user.getId()).update(map);
     }
 }

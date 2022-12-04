@@ -12,7 +12,7 @@
     <string name="confirmar_contrase_a">Confirmar Contraseña</string>
     <string name="mi_banquete">Mi Banquete</string>
     <string name="custom_title">Un momento</string>
-    <!-- TODO: Remove or change this placeholder text -->
+
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="Crear_Publicacion">Crear Publicacion</string>
     <string name="Categoria">Categoria</string>
@@ -27,6 +27,7 @@
     <string name="fotografia">Fotografia</string>
     <string name="arte_digital">Arte Digital</string>
     <string name="pinacotheca">Pinacothec@</string>
+
 
 
 </resources>
