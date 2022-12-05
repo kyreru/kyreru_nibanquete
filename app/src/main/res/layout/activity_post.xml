@@ -46,6 +46,7 @@
                     app:cardCornerRadius="15dp">
 
                     <ImageView
+                        android:id="@+id/imageViewPost1"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:src="@drawable/subir_foto"
@@ -62,6 +63,7 @@
                     app:cardCornerRadius="15dp">
 
                     <ImageView
+                        android:id="@+id/imageViewPost2"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:src="@drawable/subir_foto"
@@ -101,8 +103,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@color/transparente"
-                        android:hint="@string/Categoria"
-                        android:id="@+id/textInputEditTextVideogame"
+                        android:hint="@string/Titulo"
+                        android:id="@+id/textInputEditTextTitulo"
                         android:inputType="text"
                         tools:ignore="DuplicateClickableBoundsCheck,DuplicateClickableBoundsCheck,DuplicateClickableBoundsCheck" />
                 </com.google.android.material.textfield.TextInputLayout>
@@ -179,6 +181,7 @@
                     app:cardCornerRadius="15dp">
 
                     <ImageView
+                        android:id="@+id/Pintura"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:src="@drawable/pintura_rupestre"
@@ -212,6 +215,7 @@
                     app:cardCornerRadius="15dp">
 
                     <ImageView
+                        android:id="@+id/Escultura"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:src="@drawable/escultura"
@@ -243,6 +247,7 @@
                     app:cardCornerRadius="15dp">
 
                     <ImageView
+                        android:id="@+id/fotografia"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:src="@drawable/fotografo"
@@ -274,6 +279,7 @@
                     app:cardCornerRadius="15dp">
 
                     <ImageView
+                        android:id="@+id/artDigital"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:src="@drawable/obras_de_arte"
